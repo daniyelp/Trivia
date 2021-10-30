@@ -6,6 +6,34 @@ function getQuestions() {
   blabla()
 }
 
+function downloadQuestions() {
+  let input = document.getElementById("number_of_questions")
+  let number_of_questions = parseInt(input.value)
+  if(number_of_questions >= 1 && number_of_questions <= 100) {
+    //let args = Array.prototype.slice.call(arguments, 3);
+    let xhr = new XMLHttpRequest();
+    let url = "http://jservice.io/api/random"
+    let params = "count=" + number_of_questions
+    xhr.ontimeout = function () {
+
+    };
+    xhr.onreadystatechange = function() {
+      if (this.readyState === 4 && this.status === 200) {
+        let qs = JSON.parse(this.response);
+        for(let x in qs) {
+          let question = qs[x]
+          insertQuestion(question)
+        }
+      }
+    };
+    xhr.open("GET", url + "?" + params, true);
+    xhr.timeout = 3000
+    xhr.send(null);
+  } else {
+
+  }
+}
+
 function insertQuestion(question) {
   let temp = document.getElementsByTagName("template")[0];
   let clone = temp.content.cloneNode(true);
@@ -21,25 +49,4 @@ function insertQuestion(question) {
   created_at.textContent = question.created_at
   title.textContent = question.category.title
   document.body.appendChild(clone);
-}
-
-function blabla() {
-  var args = Array.prototype.slice.call(arguments, 3);
-  var xhr = new XMLHttpRequest();
-  var url = "http://jservice.io/api/random?count=10"
-  xhr.ontimeout = function () {
-    console.error("The request for " + url + " timed out.");
-  };
-  xhr.onreadystatechange = function() {
-    if (this.readyState === 4 && this.status === 200) {
-      let qs = JSON.parse(this.response);
-      for(let x in qs) {
-        let question = qs[x]
-        insertQuestion(question)
-      }
-    }
-  };
-  xhr.open("GET", url, true);
-  xhr.timeout = 3000
-  xhr.send(null);
 }
