@@ -20,6 +20,8 @@
   <link rel="stylesheet" href="css/main.css">
 
   <meta name="theme-color" content="#fafafa">
+
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -34,15 +36,17 @@
     <h1>Intrebari</h1>
   </div>
 
-  <div id="questions">
+  <div id="questions_with_spinner">
     <div id="spinner" class="lds-dual-ring"></div>
-    <template class="question_template">
-      <b>Question</b><b id="question"></b><br>
-      <b>Answer</b><b id="answer"></b><br>
-      <b>Value</b><b id="value"></b><br>
-      <b>Created at</b><b id="created_at"></b><br>
-      <b>Category title</b><b id="title"></b><br>
-    </template>
+    <div id="questions">
+      <template id="question_template">
+        <b>Question</b><b id="question"></b><br>
+        <b>Answer</b><b id="answer"></b><br>
+        <b>Value</b><b id="value"></b><br>
+        <b>Created at</b><b id="created_at"></b><br>
+        <b>Category title</b><b id="title"></b><br>
+      </template>
+    </div>
   </div>
 
   <script src="js/vendor/modernizr-3.11.2.min.js"></script>

@@ -288,7 +288,7 @@ textarea {
   }
 }
 
-#questions {
+#questions_with_spinner {
   width: 300px;
   border: 15px solid green;
   padding: 50px;
@@ -297,6 +297,6 @@ textarea {
   position: relative;
 }
 
-.question_template {
+/*.question_template {
   position: absolute;
-}
+}*/

@@ -45,8 +45,7 @@ function downloadQuestions() {
 }
 
 function insertQuestion(question) {
-  let temp = document.getElementsByTagName("template")[0];
-  let clone = temp.content.cloneNode(true);
+  let clone = $("#question_template").clone().get()["0"].content
 
   let text = clone.querySelector("#question")
   let answer = clone.querySelector("#answer")
@@ -58,5 +57,11 @@ function insertQuestion(question) {
   value.textContent = question.value
   created_at.textContent = question.created_at
   title.textContent = question.category.title
-  document.getElementById("questions").appendChild(clone);
+
+  var new_item = $("<div></div>").append(clone).hide();
+  //var new_item = $('<b>hello</b><br><b>hello2</b>').hide();
+  $("#questions").prepend(new_item);
+  new_item.slideDown('slow')
+  //$(response).hide().fadeIn('slow')
+  //$(clone).hide().prependTo($("#questions")).hide().fadeIn(1000)
 }
