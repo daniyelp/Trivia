@@ -6,6 +6,14 @@ function getQuestions() {
   blabla()
 }
 
+function showSpinner() {
+  document.getElementById("spinner").style.visibility = "visible"
+}
+
+function hideSpinner() {
+  document.getElementById("spinner").style.visibility = "hidden"
+}
+
 function downloadQuestions() {
   let input = document.getElementById("number_of_questions")
   let number_of_questions = parseInt(input.value)
@@ -25,9 +33,11 @@ function downloadQuestions() {
           insertQuestion(question)
         }
       }
+      hideSpinner()
     };
     xhr.open("GET", url + "?" + params, true);
     xhr.timeout = 3000
+    showSpinner()
     xhr.send(null);
   } else {
 
@@ -48,5 +58,5 @@ function insertQuestion(question) {
   value.textContent = question.value
   created_at.textContent = question.created_at
   title.textContent = question.category.title
-  document.body.appendChild(clone);
+  document.getElementById("questions").appendChild(clone);
 }
