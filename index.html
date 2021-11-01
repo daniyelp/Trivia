@@ -22,9 +22,73 @@
   <meta name="theme-color" content="#fafafa">
 
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    crossorigin="anonymous"
+  />
+
 </head>
 
 <body>
+
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeDialog()">&times;</span>
+      <form id="form" onsubmit="return onSubmit()">
+        <div class="title">Add new question</div>
+
+        <div>
+          <label for="f-question">Question</label><br>
+          <input type="text" id="f-question" name="f-question" placeholder="Why did the chicken cross the road?">
+          <i id="f-question-error-icon" class="fas fa-exclamation-circle failure-icon"></i>
+          <i id="f-question-check-icon" class="far fa-check-circle success-icon"></i><br>
+          <div id="f-question-error-message" class="error"></div>
+        </div>
+
+        <div>
+          <label for="f-answer">Answer</label><br>
+          <input type="text" id="f-answer" name="f-answer" placeholder="To get to the other side.">
+          <i id="f-answer-error-icon" class="fas fa-exclamation-circle failure-icon"></i>
+          <i id="f-answer-check-icon" class="far fa-check-circle success-icon"></i><br>
+          <div id="f-answer-error-message" class="error"></div>
+        </div>
+
+        <div>
+          <label for="f-value">Value</label><br>
+          <input type="number" id="f-value" name="f-value" min="50" max="150" value="50">
+          <i id="f-value-error-icon" class="fas fa-exclamation-circle failure-icon"></i>
+          <i id="f-value-check-icon" class="far fa-check-circle success-icon"></i><br>
+          <div id="f-value-error-message" class="error"></div>
+        </div>
+
+        <div>
+          <label for="f-created-at">Created at</label><br>
+          <input type="date" id="f-created-at" name="f-created-at" value="">
+          <i id="f-created-at-error-icon" class="fas fa-exclamation-circle failure-icon"></i>
+          <i id="f-created-at-check-icon" class="far fa-check-circle success-icon"></i><br>
+          <div id="f-created-at-error-message" class="error"></div>
+        </div>
+
+        <div>
+          <label for="f-category">Category</label><br>
+          <select name="f-category" id="f-category">
+            <option value="music">Music</option>
+            <option value="geography">Geography</option>
+            <option value="history">History</option>
+            <option value="famous">Famous</option>
+          </select>
+          <i id="f-category-error-icon" class="fas fa-exclamation-circle failure-icon"></i>
+          <i id="f-category-check-icon" class="far fa-check-circle success-icon"></i><br>
+          <div id="f-category-error-message" class="error"></div>
+        </div>
+
+        <input type="button" onclick="closeDialog()" value="Cancel">
+        <input type="submit" value="Add">
+      </form>
+    </div>
+  </div>
 
   <div class="centered">
     <label for="number_of_questions">Numar intrebari</label>
@@ -32,7 +96,7 @@
     <br>
     <button onclick="downloadQuestions()">Descarca</button>
     <br>
-    <button>Adauga</button>
+    <button onclick="showDialog()">Adauga</button>
     <h1>Intrebari</h1>
   </div>
 
