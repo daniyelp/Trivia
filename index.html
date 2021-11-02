@@ -3,20 +3,9 @@
 
 <head>
   <meta charset="utf-8">
-  <title></title>
-  <meta name="description" content="">
+  <title>Trivia</title>
+
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <meta property="og:title" content="">
-  <meta property="og:type" content="">
-  <meta property="og:url" content="">
-  <meta property="og:image" content="">
-
-  <link rel="manifest" href="site.webmanifest">
-  <link rel="apple-touch-icon" href="icon.png">
-  <!-- Place favicon.ico in the root directory -->
-
-  <meta name="theme-color" content="#fafafa">
 
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
@@ -28,16 +17,17 @@
 
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/mine.css">
 
 </head>
 
 <body>
 
-  <div id="spinner" class="lds-dual-ring"></div>
+  <div id="spinner" class="spinner"></div>
 
-  <div id="modal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeDialog()">&times;</span>
+  <div id="form-whole-screen-wrapper" class="form-whole-screen-wrapper">
+    <div class="form-wrapper">
+      <span class="close" onclick="closeForm()">&times;</span>
       <form id="form" onsubmit="return false">
         <div class="centered">
           <label class="label-bigger" id="form-title">Create new question</label><br>
@@ -93,20 +83,20 @@
           <div id="f-category-error-message" class="error error-message">Nothing</div>
         </div>
 
-        <button onclick="closeDialog()">Cancel</button>
+        <button onclick="closeForm()">Cancel</button>
         <button onclick="onSubmit()">Add</button>
       </form>
     </div>
   </div>
 
   <div class="main-content">
-    <label for="number_of_questions">Numar intrebari</label>
+    <label for="number_of_questions">Number of questions</label>
     <input type="number" id="number_of_questions" class="input-number" name="number_of_questions">
     <i id="number_of_questions-error-icon" class="fas fa-exclamation-circle failure-icon"></i><br>
     <div id="number_of_questions-error-message" class="error"></div>
-    <button onclick="downloadQuestions()">Descarca</button>
+    <button onclick="downloadQuestions()">Download</button>
     <br>
-    <button onclick="showDialog()">Adauga</button>
+    <button onclick="showForm()">Add</button>
     <br>
     <label class="label-bigger">Questions</label>
     <div id="empty">Empty</div>
@@ -123,17 +113,8 @@
     </div>
   </div>
 
-  <script src="js/vendor/modernizr-3.11.2.min.js"></script>
-  <script src="js/plugins.js"></script>
   <script src="js/main.js"></script>
 
-  <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
-  <script>
-    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
-    ga('create', 'UA-XXXXX-Y', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
-  </script>
-  <script src="https://www.google-analytics.com/analytics.js" async></script>
 </body>
-
 
 </html>

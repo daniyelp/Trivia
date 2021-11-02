@@ -1,0 +1,184 @@
+.spinner {
+  display: inline-block;
+  position: absolute;
+  visibility: hidden;
+}
+
+.spinner:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #000;
+  border-color: #008CBA transparent #008CBA transparent;
+  animation: spinner 1.2s linear infinite;
+}
+
+#spinner {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  top: 50%;
+  left: 50%;
+  margin: -40px 0 0 -40px;
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.failure-icon,
+.error {
+  color: red;
+}
+
+.success-icon {
+  color: green;
+}
+
+.failure-icon, .success-icon {
+  display: none;
+  margin-top: 10px;
+}
+
+.main-content {
+  padding: 8px;
+}
+
+button:hover {
+  filter: brightness(90%);
+}
+
+button, label, input, select, .question, .form-wrapper, #empty {
+  padding: 4px;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+button, label, input, select, #empty {
+  margin: 4px 2px;
+}
+
+.form-wrapper {
+  padding: 20px;
+}
+
+.label-bigger {
+  font-size: 32px;
+}
+
+.centered {
+  text-align: center;
+}
+
+button {
+  background-color: white;
+  color: black;
+  border: 2px solid #008CBA;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+label {
+  font-size: large;
+  font-weight: bold;
+}
+
+#questions_with_spinner {
+  width: 100%;
+  height: auto;
+  text-align: start;
+  position: relative;
+}
+
+.question {
+  width: available;
+  height: auto;
+  margin: 8px 0;
+  border: 2px solid mediumpurple;
+}
+
+.form-whole-screen-wrapper {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+}
+
+.form-wrapper {
+  background-color: #fefefe;
+  margin: auto;
+  border: 1px solid #888;
+  width: 500px;
+  height: 400px;
+}
+
+.input-number {
+  width: 6ch;
+}
+
+#empty {
+  opacity: 90%;
+}
+
+b {
+  font-weight: normal;
+}
+
+.form-label {
+  display: inline-block;
+  width: 20%;
+  vertical-align: top;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.form-input-wrapper {
+  display: inline-block;
+  width: 78%;
+}
+
+#f-question, #f-answer {
+  width: 90%;
+}
+
+.error-message {
+  display: inline-block;
+  visibility: hidden;
+}
+
+form button {
+  margin-left: 10px;
+}
+
+input, select {
+  border: 2px solid #000;
+  opacity: 90%;
+}

@@ -14,8 +14,8 @@ class Question {
   }
 }
 
-function closeDialog() {
-  $("#modal").get(0).style.display = "none";
+function closeForm() {
+  $("#form-whole-screen-wrapper").get(0).style.display = "none";
   resetForm()
 }
 
@@ -23,15 +23,8 @@ function resetForm() {
   $("#form").get(0).reset();
 }
 
-function showDialog() {
-  $("#modal").get(0).style.display = "block";
-}
-
-function getQuestions() {
-  /*var temp = document.getElementsByTagName("template")[0];
-  var clone = temp.content.cloneNode(true);
-  document.body.appendChild(clone);*/
-  blabla()
+function showForm() {
+  $("#form-whole-screen-wrapper").get(0).style.display = "block";
 }
 
 function showSpinner() {
@@ -160,7 +153,7 @@ function onSubmit() {
       category.value
     )
     insertQuestion(q)
-    closeDialog()
+    closeForm()
     let form = document.getElementById("form")
     form.reset()
   }
