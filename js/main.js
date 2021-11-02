@@ -96,11 +96,11 @@ function insertQuestion(question) {
   title.textContent = question.category
 
   var new_item = $("<div class='question'></div>").append(clone).hide();
-  //var new_item = $('<b>hello</b><br><b>hello2</b>').hide();
   $("#questions").prepend(new_item);
   new_item.slideDown('slow')
-  //$(response).hide().fadeIn('slow')
-  //$(clone).hide().prependTo($("#questions")).hide().fadeIn(1000)
+
+  let empty = document.getElementById("empty")
+  empty.style.display = 'none'
 }
 
 function validateInput(input, errorIcon, checkIcon, errorMessage, isValid, errorMessageValue) {

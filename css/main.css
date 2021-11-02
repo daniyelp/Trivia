@@ -395,3 +395,7 @@ label {
   left: 50%;
   margin: -40px 0 0 -40px;
 }
+
+#empty {
+  opacity: 90%;
+}
