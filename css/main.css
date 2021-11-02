@@ -316,17 +316,20 @@ form div i {
 
 .failure-icon, .success-icon {
   display: none;
+  margin-top: 10px;
 }
 
 body {
   padding: 8px;
 }
-button, label, input, .question, .modal-content {
+
+button, label, input, select, .question, .modal-content, #empty {
   padding: 4px;
   border-radius: 4px;
   font-size: 16px;
 }
-button, label, input {
+
+button, label, input, select, #empty {
   margin: 4px 2px;
 }
 
@@ -334,6 +337,13 @@ button, label, input {
   padding: 20px;
 }
 
+.label-bigger {
+  font-size: 32px;
+}
+
+.centered {
+  text-align: center;
+}
 
 button {
   background-color: white;
@@ -397,5 +407,40 @@ label {
 }
 
 #empty {
+  opacity: 90%;
+}
+
+b {
+  font-weight: normal;
+}
+
+.form-label {
+  display: inline-block;
+  width: 20%;
+  vertical-align: top;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.form-input-wrapper {
+  display: inline-block;
+  width: 78%;
+}
+
+#f-question, #f-answer {
+  width: 90%;
+}
+
+.error-message {
+  display: inline-block;
+  visibility: hidden;
+}
+
+form button {
+  margin-left: 10px;
+}
+
+input, select {
+  border: 2px solid #000;
   opacity: 90%;
 }

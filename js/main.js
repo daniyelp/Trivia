@@ -108,13 +108,13 @@ function validateInput(input, errorIcon, checkIcon, errorMessage, isValid, error
     input.style.border = "2px solid green"
     if(errorIcon != null) errorIcon.style.display = 'none'
     if(checkIcon != null) checkIcon.style.display = 'inline-block'
-    if(errorMessage != null) errorMessage.innerHTML = ""
+    if(errorMessage != null) { errorMessage.innerHTML = ""; errorMessage.style.visibility = 'hidden'}
     return true
   } else {
     input.style.border = "2px solid red"
     if(errorIcon != null) errorIcon.style.display = 'inline-block'
     if(checkIcon != null) checkIcon.style.display = 'none'
-    if(errorMessage != null) errorMessage.innerHTML = errorMessageValue
+    if(errorMessage != null) { errorMessage.innerHTML = errorMessageValue; errorMessage.style.visibility = 'visible' }
     return false
   }
 }
