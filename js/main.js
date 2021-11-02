@@ -44,40 +44,41 @@ function hideSpinner() {
 
 function downloadQuestions() {
   let input = document.getElementById("number_of_questions")
-  let number_of_questions = parseInt(input.value)
-  if(number_of_questions >= 1 && number_of_questions <= 100) {
-    //let args = Array.prototype.slice.call(arguments, 3);
-    let xhr = new XMLHttpRequest();
-    let url = "http://jservice.io/api/random"
-    let params = "count=" + number_of_questions
-    xhr.ontimeout = function () {
-
-    };
-    xhr.onreadystatechange = function() {
-      if (this.readyState === 4 && this.status === 200) {
-        let qs = JSON.parse(this.response);
-        for(let x in qs) {
-          let question = qs[x]
-          insertQuestion(
-            new Question(
-              question.question,
-              question.answer,
-              question.value,
-              question.created_at,
-              question.category.title
-            )
-          )
-        }
-      }
-      hideSpinner()
-    };
-    xhr.open("GET", url + "?" + params, true);
-    xhr.timeout = 3000
-    showSpinner()
-    xhr.send(null);
-  } else {
-
+  let error_icon = document.getElementById("number_of_questions-error-icon")
+  let error_message = document.getElementById("number_of_questions-error-message")
+  let ok = validateInput(input, error_icon, null, error_message, (str => {let x = parseInt(str); return (x >= 1 && x <= 100)}), "The input value should lie between 1 and 100")
+  if(!ok) {
+    return
   }
+  let number_of_questions = parseInt(input.value)
+  let xhr = new XMLHttpRequest();
+  let url = "http://jservice.io/api/random"
+  let params = "count=" + number_of_questions
+  xhr.ontimeout = function () {
+
+  };
+  xhr.onreadystatechange = function() {
+    if (this.readyState === 4 && this.status === 200) {
+      let qs = JSON.parse(this.response);
+      for(let x in qs) {
+        let question = qs[x]
+        insertQuestion(
+          new Question(
+            question.question,
+            question.answer,
+            question.value,
+            question.created_at,
+            question.category.title
+          )
+        )
+      }
+    }
+    hideSpinner()
+  };
+  xhr.open("GET", url + "?" + params, true);
+  xhr.timeout = 3000
+  showSpinner()
+  xhr.send(null);
 }
 
 function insertQuestion(question) {
@@ -94,7 +95,7 @@ function insertQuestion(question) {
   created_at.textContent = question.created_at
   title.textContent = question.category
 
-  var new_item = $("<div></div>").append(clone).hide();
+  var new_item = $("<div class='question'></div>").append(clone).hide();
   //var new_item = $('<b>hello</b><br><b>hello2</b>').hide();
   $("#questions").prepend(new_item);
   new_item.slideDown('slow')
@@ -105,15 +106,15 @@ function insertQuestion(question) {
 function validateInput(input, errorIcon, checkIcon, errorMessage, isValid, errorMessageValue) {
   if(isValid(input.value)) {
     input.style.border = "2px solid green"
-    errorIcon.style.opacity = "0"
-    checkIcon.style.opacity = "1"
-    errorMessage.innerHTML = ""
+    if(errorIcon != null) errorIcon.style.display = 'none'
+    if(checkIcon != null) checkIcon.style.display = 'inline-block'
+    if(errorMessage != null) errorMessage.innerHTML = ""
     return true
   } else {
     input.style.border = "2px solid red"
-    errorIcon.style.opacity = "1"
-    checkIcon.style.opacity = "0"
-    errorMessage.innerHTML = errorMessageValue
+    if(errorIcon != null) errorIcon.style.display = 'inline-block'
+    if(checkIcon != null) checkIcon.style.display = 'none'
+    if(errorMessage != null) errorMessage.innerHTML = errorMessageValue
     return false
   }
 }

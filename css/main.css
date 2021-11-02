@@ -263,8 +263,6 @@ textarea {
 
 .lds-dual-ring {
   display: inline-block;
-  width: 80px;
-  height: 80px;
   position: absolute;
   visibility: hidden;
 }
@@ -276,7 +274,7 @@ textarea {
   margin: 8px;
   border-radius: 50%;
   border: 6px solid #000;
-  border-color: #000 transparent #000 transparent;
+  border-color: #008CBA transparent #008CBA transparent;
   animation: lds-dual-ring 1.2s linear infinite;
 }
 @keyframes lds-dual-ring {
@@ -286,41 +284,6 @@ textarea {
   100% {
     transform: rotate(360deg);
   }
-}
-
-#questions_with_spinner {
-  width: 300px;
-  border: 15px solid green;
-  padding: 50px;
-  margin: 20px;
-  text-align: center;
-  position: relative;
-}
-
-/*.question_template {
-  position: absolute;
-}*/
-
-/* The Modal (background) */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  padding-top: 100px;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0,0.4);
-}
-
-.modal-content {
-  background-color: #fefefe;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 500px;
-  height: 400px;
 }
 
 /* The Close Button */
@@ -351,12 +314,84 @@ form div i {
   color: green;
 }
 
-.error {
-  font-size: 14.5px;
-  margin-top: 5px;
+.failure-icon, .success-icon {
+  display: none;
 }
 
-.success-icon,
-.failure-icon {
-  opacity: 0;
+body {
+  padding: 8px;
+}
+button, label, input, .question, .modal-content {
+  padding: 4px;
+  border-radius: 4px;
+  font-size: 16px;
+}
+button, label, input {
+  margin: 4px 2px;
+}
+
+.modal-content {
+  padding: 20px;
+}
+
+
+button {
+  background-color: white;
+  color: black;
+  border: 2px solid #008CBA;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+label {
+  font-size: large;
+  font-weight: bold;
+}
+
+#questions_with_spinner {
+  width: 100%;
+  height: auto;
+  text-align: start;
+  position: relative;
+}
+
+.question {
+  width: available;
+  height: auto;
+  margin: 8px 0;
+  border: 2px solid mediumpurple;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  border: 1px solid #888;
+  width: 500px;
+  height: 400px;
+}
+
+.input-number {
+  width: 6ch;
+}
+
+#spinner {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  top: 50%;
+  left: 50%;
+  margin: -40px 0 0 -40px;
 }

@@ -16,9 +16,6 @@
   <link rel="apple-touch-icon" href="icon.png">
   <!-- Place favicon.ico in the root directory -->
 
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/main.css">
-
   <meta name="theme-color" content="#fafafa">
 
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -29,9 +26,14 @@
     crossorigin="anonymous"
   />
 
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+
 </head>
 
 <body>
+
+  <div id="spinner" class="lds-dual-ring"></div>
 
   <div id="modal" class="modal">
     <div class="modal-content">
@@ -39,39 +41,30 @@
       <form id="form" onsubmit="return onSubmit()">
         <div class="title">Add new question</div>
 
-        <div>
           <label for="f-question">Question</label><br>
           <input type="text" id="f-question" name="f-question" placeholder="Why did the chicken cross the road?">
           <i id="f-question-error-icon" class="fas fa-exclamation-circle failure-icon"></i>
           <i id="f-question-check-icon" class="far fa-check-circle success-icon"></i><br>
           <div id="f-question-error-message" class="error"></div>
-        </div>
 
-        <div>
           <label for="f-answer">Answer</label><br>
           <input type="text" id="f-answer" name="f-answer" placeholder="To get to the other side.">
           <i id="f-answer-error-icon" class="fas fa-exclamation-circle failure-icon"></i>
           <i id="f-answer-check-icon" class="far fa-check-circle success-icon"></i><br>
           <div id="f-answer-error-message" class="error"></div>
-        </div>
 
-        <div>
           <label for="f-value">Value</label><br>
-          <input type="number" id="f-value" name="f-value" min="50" max="150" value="50">
+          <input type="number" id="f-value" class="input-number" name="f-value" min="50" max="150" value="50">
           <i id="f-value-error-icon" class="fas fa-exclamation-circle failure-icon"></i>
           <i id="f-value-check-icon" class="far fa-check-circle success-icon"></i><br>
           <div id="f-value-error-message" class="error"></div>
-        </div>
 
-        <div>
           <label for="f-created-at">Created at</label><br>
           <input type="date" id="f-created-at" name="f-created-at" value="">
           <i id="f-created-at-error-icon" class="fas fa-exclamation-circle failure-icon"></i>
           <i id="f-created-at-check-icon" class="far fa-check-circle success-icon"></i><br>
           <div id="f-created-at-error-message" class="error"></div>
-        </div>
 
-        <div>
           <label for="f-category">Category</label><br>
           <select name="f-category" id="f-category">
             <option value="music">Music</option>
@@ -82,7 +75,6 @@
           <i id="f-category-error-icon" class="fas fa-exclamation-circle failure-icon"></i>
           <i id="f-category-check-icon" class="far fa-check-circle success-icon"></i><br>
           <div id="f-category-error-message" class="error"></div>
-        </div>
 
         <input type="button" onclick="closeDialog()" value="Cancel">
         <input type="submit" value="Add">
@@ -92,23 +84,24 @@
 
   <div class="centered">
     <label for="number_of_questions">Numar intrebari</label>
-    <input type="text" id="number_of_questions" name="number_of_questions">
+    <input type="number" id="number_of_questions" class="input-number" name="number_of_questions">
+    <i id="number_of_questions-error-icon" class="fas fa-exclamation-circle failure-icon"></i><br>
+    <div id="number_of_questions-error-message" class="error"></div>
     <br>
     <button onclick="downloadQuestions()">Descarca</button>
     <br>
     <button onclick="showDialog()">Adauga</button>
-    <h1>Intrebari</h1>
   </div>
 
+  <h1>Intrebari</h1>
   <div id="questions_with_spinner">
-    <div id="spinner" class="lds-dual-ring"></div>
     <div id="questions">
       <template id="question_template">
-        <b>Question</b><b id="question"></b><br>
-        <b>Answer</b><b id="answer"></b><br>
-        <b>Value</b><b id="value"></b><br>
-        <b>Created at</b><b id="created_at"></b><br>
-        <b>Category title</b><b id="title"></b><br>
+        <label>Question</label><b id="question"></b><br>
+        <label>Answer</label><b id="answer"></b><br>
+        <label>Value</label><b id="value"></b><br>
+        <label>Created at</label><b id="created_at"></b><br>
+        <label>Category title</label><b id="title"></b><br>
       </template>
     </div>
   </div>
