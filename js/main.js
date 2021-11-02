@@ -48,8 +48,13 @@ function downloadQuestions() {
   let url = "http://jservice.io/api/random"
   let params = "count=" + number_of_questions
   xhr.ontimeout = function () {
-
+    hideSpinner()
+    alert("The request timed out!")
   };
+  xhr.onerror = function () {
+    hideSpinner()
+    alert("Check your internet connection!")
+  }
   xhr.onreadystatechange = function() {
     if (this.readyState === 4 && this.status === 200) {
       let qs = JSON.parse(this.response);
