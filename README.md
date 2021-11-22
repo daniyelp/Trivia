@@ -1,6 +1,6 @@
 Trivia
 ============
-This is a simple and short Trivia app that I had to make for class. Made with HTML, CSS, JS (and JQuery). It etches data from a public API. Probably doesn't use the best bractices.
+This is a simple and short Trivia app that I had to make for class. Made with HTML, CSS, JS (and JQuery). It fetches data from a public API. Probably doesn't use the best bractices.
 
 ![trivia-gif](https://user-images.githubusercontent.com/84658876/142861184-6f4dde1c-e177-495c-be42-20b52371c5c4.gif)
 ## License
